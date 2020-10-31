@@ -8,10 +8,17 @@ def call(){
   //for(ScriptApproval.ApprovedWhitelist approved : scriptApproval.getApprovedSignatures()) {
   //  println(approved.signature)
   //}
-
+  // Approve signature
   for(ScriptApproval pending: scriptApproval.getPendingSignatures()){
-    println("Pending: " + pending.signature)
-    println("Approving: " + pending.signature)
+    println("Pending signature: " + pending.signature)
+    println("Approving signature: " + pending.signature)
+    scriptApproval.approveSignature(pending.signature)
+  }
+
+  // Approve scripts
+  for(ScriptApproval pending: scriptApproval.getPendingScripts()){
+    println("Pending script: " + pending.script)
+    println("Approving script: "+ pending.script)
     scriptApproval.approveScript(pending.getHash())
   }
 }
